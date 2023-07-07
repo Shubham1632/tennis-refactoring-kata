@@ -43,8 +43,9 @@ describe("TennisGame", () => {
   describe("TennisGame2", () => {
     scores.forEach(([player1Score, player2Score, expectedScore]) => {
       it(`scores ${player1Score}:${player2Score} as ${expectedScore}`, () => {
-        const game = new TennisGame1("player1", "player2");
-        checkScore(game, player1Score, player2Score, expectedScore);
+        const game = new TennisGame2("player1", "player2");
+        game.play(player1Score, player2Score);
+        expect(game.getScore()).toBe(expectedScore);
       });
     });
   });
@@ -52,12 +53,9 @@ describe("TennisGame", () => {
   describe("TennisGame3", () => {
     scores.forEach(([player1Score, player2Score, expectedScore]) => {
       it(`scores ${player1Score}:${player2Score} as ${expectedScore}`, () => {
-        checkScore(
-          new TennisGame3("player1", "player2"),
-          player1Score,
-          player2Score,
-          expectedScore
-        );
+        const game = new TennisGame3("player1", "player2");
+        game.play(player1Score, player2Score);
+        expect(game.getScore()).toBe(expectedScore);
       });
     });
   });

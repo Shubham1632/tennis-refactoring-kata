@@ -107,5 +107,15 @@ export class TennisGame2 implements TennisGame {
     else this.P2Score();
   }
 
-  play(player1Score: number, player2Score: number): void {}
+  play(player1Score: number, player2Score: number): void {
+    const highestScore: number = Math.max(player1Score, player2Score);
+    for (let i = 0; i < highestScore; i++) {
+      if (i < player1Score) {
+        this.wonPoint("player1");
+      }
+      if (i < player2Score) {
+        this.wonPoint("player2");
+      }
+    }
+  }
 }
